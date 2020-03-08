@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pie-dao/proxied-balancer-factory.git"
+    "url": "git+https://github.com/pie-dao/pie-mock-contracts.git"
   },
   "author": "Pie DAO",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/pie-dao/proxied-balancer-factory/issues"
+    "url": "https://github.com/pie-dao/pie-mock-contracts/issues"
   },
-  "homepage": "https://github.com/pie-dao/proxied-balancer-factory/readme",
+  "homepage": "https://github.com/pie-dao/pie-mock-contracts/readme",
   "devDependencies": {
     "@nomiclabs/buidler": "^1.1.2",
     "@nomiclabs/buidler-ethers": "^1.1.2",
