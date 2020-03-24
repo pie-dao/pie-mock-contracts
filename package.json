@@ -1,10 +1,13 @@
 {
   "name": "@pie-dao/mock-contracts",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "Implementations of smart pools for Balancer",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "npm run compile && npx buidler typechain",
+    "build-ts": "node ./node_modules/typescript/bin/tsc --build",
+    "build-all": "npm run build && npm run build-ts",
     "compile": "npx buidler compile",
     "test": "npx buidler test",
     "coverage": "npm run build && npx buidler coverage --temp artifacts --network coverage"
