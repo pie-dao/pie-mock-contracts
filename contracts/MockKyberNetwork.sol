@@ -53,7 +53,12 @@ contract MockKyberNetwork {
             actualSrcAmount = maxDestAmount * PRECISION / rate;
         }
 
-        require(src.transferFrom(msg.sender, address(this), actualSrcAmount), "TRANSFER_FAILED");
+        if(address(src) == address(ETH_TOKEN_ADDRESS)) {
+            require(msg.value >= actualSrcAmount);
+            msg.sender.transfer(msg.value - actualSrcAmount);
+        } else {
+            require(src.transferFrom(msg.sender, address(this), actualSrcAmount), "TRANSFER_FAILED");
+        }
 
         if(dest == ETH_TOKEN_ADDRESS) {
             destAddress.transfer(destAmount);

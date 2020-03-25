@@ -1,6 +1,6 @@
 {
   "name": "@pie-dao/mock-contracts",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Implementations of smart pools for Balancer",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
