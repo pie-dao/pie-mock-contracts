@@ -34,6 +34,10 @@ interface MockTokenInterface extends Interface {
       encode([spender, subtractedValue]: [string, BigNumberish]): string;
     }>;
 
+    failTransfer: TypedFunctionDescription<{ encode([]: []): string }>;
+
+    failTransferFrom: TypedFunctionDescription<{ encode([]: []): string }>;
+
     increaseAllowance: TypedFunctionDescription<{
       encode([spender, addedValue]: [string, BigNumberish]): string;
     }>;
@@ -44,20 +48,38 @@ interface MockTokenInterface extends Interface {
 
     name: TypedFunctionDescription<{ encode([]: []): string }>;
 
+    returnFalseTransfer: TypedFunctionDescription<{ encode([]: []): string }>;
+
+    returnFalseTransferFrom: TypedFunctionDescription<{
+      encode([]: []): string;
+    }>;
+
+    setTransferFailed: TypedFunctionDescription<{
+      encode([_value]: [boolean]): string;
+    }>;
+
+    setTransferFromFailed: TypedFunctionDescription<{
+      encode([_value]: [boolean]): string;
+    }>;
+
+    setTransferFromReturnFalse: TypedFunctionDescription<{
+      encode([_value]: [boolean]): string;
+    }>;
+
+    setTransferReturnFalse: TypedFunctionDescription<{
+      encode([_value]: [boolean]): string;
+    }>;
+
     symbol: TypedFunctionDescription<{ encode([]: []): string }>;
 
     totalSupply: TypedFunctionDescription<{ encode([]: []): string }>;
 
     transfer: TypedFunctionDescription<{
-      encode([recipient, amount]: [string, BigNumberish]): string;
+      encode([_to, _amount]: [string, BigNumberish]): string;
     }>;
 
     transferFrom: TypedFunctionDescription<{
-      encode([sender, recipient, amount]: [
-        string,
-        string,
-        BigNumberish
-      ]): string;
+      encode([_from, _to, _amount]: [string, string, BigNumberish]): string;
     }>;
   };
 
@@ -118,6 +140,10 @@ export class MockToken extends Contract {
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
 
+    failTransfer(): Promise<boolean>;
+
+    failTransferFrom(): Promise<boolean>;
+
     increaseAllowance(
       spender: string,
       addedValue: BigNumberish,
@@ -132,20 +158,44 @@ export class MockToken extends Contract {
 
     name(): Promise<string>;
 
+    returnFalseTransfer(): Promise<boolean>;
+
+    returnFalseTransferFrom(): Promise<boolean>;
+
+    setTransferFailed(
+      _value: boolean,
+      overrides?: TransactionOverrides
+    ): Promise<ContractTransaction>;
+
+    setTransferFromFailed(
+      _value: boolean,
+      overrides?: TransactionOverrides
+    ): Promise<ContractTransaction>;
+
+    setTransferFromReturnFalse(
+      _value: boolean,
+      overrides?: TransactionOverrides
+    ): Promise<ContractTransaction>;
+
+    setTransferReturnFalse(
+      _value: boolean,
+      overrides?: TransactionOverrides
+    ): Promise<ContractTransaction>;
+
     symbol(): Promise<string>;
 
     totalSupply(): Promise<BigNumber>;
 
     transfer(
-      recipient: string,
-      amount: BigNumberish,
+      _to: string,
+      _amount: BigNumberish,
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
 
     transferFrom(
-      sender: string,
-      recipient: string,
-      amount: BigNumberish,
+      _from: string,
+      _to: string,
+      _amount: BigNumberish,
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
   };
@@ -174,6 +224,10 @@ export class MockToken extends Contract {
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
 
+  failTransfer(): Promise<boolean>;
+
+  failTransferFrom(): Promise<boolean>;
+
   increaseAllowance(
     spender: string,
     addedValue: BigNumberish,
@@ -188,20 +242,44 @@ export class MockToken extends Contract {
 
   name(): Promise<string>;
 
+  returnFalseTransfer(): Promise<boolean>;
+
+  returnFalseTransferFrom(): Promise<boolean>;
+
+  setTransferFailed(
+    _value: boolean,
+    overrides?: TransactionOverrides
+  ): Promise<ContractTransaction>;
+
+  setTransferFromFailed(
+    _value: boolean,
+    overrides?: TransactionOverrides
+  ): Promise<ContractTransaction>;
+
+  setTransferFromReturnFalse(
+    _value: boolean,
+    overrides?: TransactionOverrides
+  ): Promise<ContractTransaction>;
+
+  setTransferReturnFalse(
+    _value: boolean,
+    overrides?: TransactionOverrides
+  ): Promise<ContractTransaction>;
+
   symbol(): Promise<string>;
 
   totalSupply(): Promise<BigNumber>;
 
   transfer(
-    recipient: string,
-    amount: BigNumberish,
+    _to: string,
+    _amount: BigNumberish,
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
 
   transferFrom(
-    sender: string,
-    recipient: string,
-    amount: BigNumberish,
+    _from: string,
+    _to: string,
+    _amount: BigNumberish,
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
 
@@ -231,6 +309,10 @@ export class MockToken extends Contract {
       subtractedValue: BigNumberish
     ): Promise<BigNumber>;
 
+    failTransfer(): Promise<BigNumber>;
+
+    failTransferFrom(): Promise<BigNumber>;
+
     increaseAllowance(
       spender: string,
       addedValue: BigNumberish
@@ -240,16 +322,28 @@ export class MockToken extends Contract {
 
     name(): Promise<BigNumber>;
 
+    returnFalseTransfer(): Promise<BigNumber>;
+
+    returnFalseTransferFrom(): Promise<BigNumber>;
+
+    setTransferFailed(_value: boolean): Promise<BigNumber>;
+
+    setTransferFromFailed(_value: boolean): Promise<BigNumber>;
+
+    setTransferFromReturnFalse(_value: boolean): Promise<BigNumber>;
+
+    setTransferReturnFalse(_value: boolean): Promise<BigNumber>;
+
     symbol(): Promise<BigNumber>;
 
     totalSupply(): Promise<BigNumber>;
 
-    transfer(recipient: string, amount: BigNumberish): Promise<BigNumber>;
+    transfer(_to: string, _amount: BigNumberish): Promise<BigNumber>;
 
     transferFrom(
-      sender: string,
-      recipient: string,
-      amount: BigNumberish
+      _from: string,
+      _to: string,
+      _amount: BigNumberish
     ): Promise<BigNumber>;
   };
 }
