@@ -24,6 +24,8 @@ interface ERC20Interface extends Interface {
       encode([account]: [string]): string;
     }>;
 
+    decimals: TypedFunctionDescription<{ encode([]: []): string }>;
+
     decreaseAllowance: TypedFunctionDescription<{
       encode([spender, subtractedValue]: [string, BigNumberish]): string;
     }>;
@@ -31,6 +33,10 @@ interface ERC20Interface extends Interface {
     increaseAllowance: TypedFunctionDescription<{
       encode([spender, addedValue]: [string, BigNumberish]): string;
     }>;
+
+    name: TypedFunctionDescription<{ encode([]: []): string }>;
+
+    symbol: TypedFunctionDescription<{ encode([]: []): string }>;
 
     totalSupply: TypedFunctionDescription<{ encode([]: []): string }>;
 
@@ -90,6 +96,8 @@ export class ERC20 extends Contract {
 
     balanceOf(account: string): Promise<BigNumber>;
 
+    decimals(): Promise<number>;
+
     decreaseAllowance(
       spender: string,
       subtractedValue: BigNumberish,
@@ -101,6 +109,10 @@ export class ERC20 extends Contract {
       addedValue: BigNumberish,
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
+
+    name(): Promise<string>;
+
+    symbol(): Promise<string>;
 
     totalSupply(): Promise<BigNumber>;
 
@@ -128,6 +140,8 @@ export class ERC20 extends Contract {
 
   balanceOf(account: string): Promise<BigNumber>;
 
+  decimals(): Promise<number>;
+
   decreaseAllowance(
     spender: string,
     subtractedValue: BigNumberish,
@@ -139,6 +153,10 @@ export class ERC20 extends Contract {
     addedValue: BigNumberish,
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
+
+  name(): Promise<string>;
+
+  symbol(): Promise<string>;
 
   totalSupply(): Promise<BigNumber>;
 
@@ -172,6 +190,8 @@ export class ERC20 extends Contract {
 
     balanceOf(account: string): Promise<BigNumber>;
 
+    decimals(): Promise<BigNumber>;
+
     decreaseAllowance(
       spender: string,
       subtractedValue: BigNumberish
@@ -181,6 +201,10 @@ export class ERC20 extends Contract {
       spender: string,
       addedValue: BigNumberish
     ): Promise<BigNumber>;
+
+    name(): Promise<BigNumber>;
+
+    symbol(): Promise<BigNumber>;
 
     totalSupply(): Promise<BigNumber>;
 

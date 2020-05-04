@@ -1,9 +1,8 @@
 pragma solidity ^0.6.4;
 
-import "@openzeppelin/contracts/token/ERC20/ERC20Detailed.sol";
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
-contract MockToken is ERC20Detailed, ERC20 {
+contract MockToken is ERC20 {
 
     bool public failTransferFrom;
     bool public failTransfer;
@@ -14,8 +13,8 @@ contract MockToken is ERC20Detailed, ERC20 {
         string memory _name,
         string memory _symbol,
         uint8 _decimals
-    ) ERC20Detailed(_name, _symbol, _decimals) public {
-        // NOTHING
+    ) ERC20(_name, _symbol) public {
+        _setupDecimals(_decimals);
     }
 
 
@@ -39,7 +38,7 @@ contract MockToken is ERC20Detailed, ERC20 {
 
     // ERC20 OVERRIDES
 
-    function transferFrom(address _from, address _to, uint256 _amount) public override(ERC20, IERC20) returns (bool) {
+    function transferFrom(address _from, address _to, uint256 _amount) public override returns (bool) {
         require(!failTransferFrom, "MockToken.transferFrom: transferFrom set to fail");
 
         if(returnFalseTransferFrom) {
@@ -49,7 +48,7 @@ contract MockToken is ERC20Detailed, ERC20 {
         return super.transferFrom(_from, _to, _amount);
     }
 
-    function transfer(address _to, uint256 _amount) public override(ERC20, IERC20) returns (bool) {
+    function transfer(address _to, uint256 _amount) public override returns (bool) {
         require(!failTransfer, "MockToken.transfer: transferFrom set to fail");
 
         if(returnFalseTransfer) {

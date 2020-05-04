@@ -1,7 +1,7 @@
 {
   "name": "@pie-dao/mock-contracts",
-  "version": "0.0.6",
-  "description": "Implementations of smart pools for Balancer",
+  "version": "0.0.8",
+  "description": "Mock contracts used for testing",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -10,7 +10,8 @@
     "build-all": "npm run build && npm run build-ts",
     "compile": "npx buidler compile",
     "test": "npx buidler test",
-    "coverage": "npm run build && npx buidler coverage --temp artifacts --network coverage"
+    "coverage": "npm run build && npx buidler coverage --temp artifacts --network coverage",
+    "prepublish": "npm run build-all"
   },
   "repository": {
     "type": "git",
@@ -47,6 +48,6 @@
     "test": "test"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^3.0.0-beta.0"
+    "@openzeppelin/contracts": "^3.0.1"
   }
 }
