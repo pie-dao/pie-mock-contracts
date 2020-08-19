@@ -17,7 +17,7 @@ interface MockTokenInterface extends Interface {
     }>;
 
     approve: TypedFunctionDescription<{
-      encode([spender, amount]: [string, BigNumberish]): string;
+      encode([_spender, _amount]: [string, BigNumberish]): string;
     }>;
 
     balanceOf: TypedFunctionDescription<{
@@ -33,6 +33,8 @@ interface MockTokenInterface extends Interface {
     decreaseAllowance: TypedFunctionDescription<{
       encode([spender, subtractedValue]: [string, BigNumberish]): string;
     }>;
+
+    doKyberLikeApproval: TypedFunctionDescription<{ encode([]: []): string }>;
 
     failTransfer: TypedFunctionDescription<{ encode([]: []): string }>;
 
@@ -52,6 +54,10 @@ interface MockTokenInterface extends Interface {
 
     returnFalseTransferFrom: TypedFunctionDescription<{
       encode([]: []): string;
+    }>;
+
+    setDoKyberLikeApproval: TypedFunctionDescription<{
+      encode([_value]: [boolean]): string;
     }>;
 
     setTransferFailed: TypedFunctionDescription<{
@@ -119,8 +125,8 @@ export class MockToken extends Contract {
     allowance(owner: string, spender: string): Promise<BigNumber>;
 
     approve(
-      spender: string,
-      amount: BigNumberish,
+      _spender: string,
+      _amount: BigNumberish,
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
 
@@ -139,6 +145,8 @@ export class MockToken extends Contract {
       subtractedValue: BigNumberish,
       overrides?: TransactionOverrides
     ): Promise<ContractTransaction>;
+
+    doKyberLikeApproval(): Promise<boolean>;
 
     failTransfer(): Promise<boolean>;
 
@@ -161,6 +169,11 @@ export class MockToken extends Contract {
     returnFalseTransfer(): Promise<boolean>;
 
     returnFalseTransferFrom(): Promise<boolean>;
+
+    setDoKyberLikeApproval(
+      _value: boolean,
+      overrides?: TransactionOverrides
+    ): Promise<ContractTransaction>;
 
     setTransferFailed(
       _value: boolean,
@@ -203,8 +216,8 @@ export class MockToken extends Contract {
   allowance(owner: string, spender: string): Promise<BigNumber>;
 
   approve(
-    spender: string,
-    amount: BigNumberish,
+    _spender: string,
+    _amount: BigNumberish,
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
 
@@ -223,6 +236,8 @@ export class MockToken extends Contract {
     subtractedValue: BigNumberish,
     overrides?: TransactionOverrides
   ): Promise<ContractTransaction>;
+
+  doKyberLikeApproval(): Promise<boolean>;
 
   failTransfer(): Promise<boolean>;
 
@@ -245,6 +260,11 @@ export class MockToken extends Contract {
   returnFalseTransfer(): Promise<boolean>;
 
   returnFalseTransferFrom(): Promise<boolean>;
+
+  setDoKyberLikeApproval(
+    _value: boolean,
+    overrides?: TransactionOverrides
+  ): Promise<ContractTransaction>;
 
   setTransferFailed(
     _value: boolean,
@@ -296,7 +316,7 @@ export class MockToken extends Contract {
   estimate: {
     allowance(owner: string, spender: string): Promise<BigNumber>;
 
-    approve(spender: string, amount: BigNumberish): Promise<BigNumber>;
+    approve(_spender: string, _amount: BigNumberish): Promise<BigNumber>;
 
     balanceOf(account: string): Promise<BigNumber>;
 
@@ -308,6 +328,8 @@ export class MockToken extends Contract {
       spender: string,
       subtractedValue: BigNumberish
     ): Promise<BigNumber>;
+
+    doKyberLikeApproval(): Promise<BigNumber>;
 
     failTransfer(): Promise<BigNumber>;
 
@@ -325,6 +347,8 @@ export class MockToken extends Contract {
     returnFalseTransfer(): Promise<BigNumber>;
 
     returnFalseTransferFrom(): Promise<BigNumber>;
+
+    setDoKyberLikeApproval(_value: boolean): Promise<BigNumber>;
 
     setTransferFailed(_value: boolean): Promise<BigNumber>;
 
