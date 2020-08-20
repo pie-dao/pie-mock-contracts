@@ -65,7 +65,7 @@ contract MockToken is ERC20 {
 
     function approve(address _spender, uint256 _amount) public override returns (bool) {
         if(doKyberLikeApproval) {
-            require(_amount == 0 || allowance(msg.sender, _spender) == 0);
+            require(_amount == 0 || allowance(msg.sender, _spender) == 0, "APPROVAL_NOT_CURRENTLY_ZERO");
         }
         return super.approve(_spender, _amount);
     }
