@@ -48,6 +48,6 @@
     "test": "test"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^3.0.1"
+    "@openzeppelin/contracts": "^4.7.2"
   }
 }
